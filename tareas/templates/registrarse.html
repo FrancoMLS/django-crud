@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <article class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body">
+                <h1 class="display-4 mb-4 text-center"> Registrarse </h1>
+                <p style="color: #dc3545;">{{error}}</p>
+                {% csrf_token %}
+                <label for="username">Usuario:</label>
+                <input type="text" name="username" id="username" placeholder="Ingrese un nombre de usuario" required>
+                <label for="password1">Contraseña:</label>
+                <input type="password" name="password1" id="password1" placeholder="Ingrese una contraseña" required>
+                <label for="password2">Confirme su contraseña:</label>
+                <input type="password" name="password2" id="password2" placeholder="Ingrese la contraseña nuevamente" required>
+                <button class="btn btn-primary p-1 mt-2"> Registrarse </button>
+                <p class="pt-3">¿Ya tienes una cuenta? Haz click <a style="text-decoration: none;" href="{% url 'iniciar_sesion' %}">aquí</a> para iniciar sesión</p>
+
+            </form>
+        </div>
+    </article>
+</main>
+
+{% endblock %}

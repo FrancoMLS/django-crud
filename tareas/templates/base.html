@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django CRUD</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/261bda0ed4.js" crossorigin="anonymous"></script>
+    <style>
+        footer {
+            bottom: 0;
+            width: 100%;
+            color: rgb(204, 202, 202);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Django CRUD</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/tareas">Tareas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tareas_pendientes">Tareas pendientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tareas_completadas">Tareas completadas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tareas/crear_tarea">Crear tarea</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #dc3545;" href="/logout">Cerrar sesión</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/registrarse">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/iniciar-sesion">Iniciar sesión</a>
+                </li>
+                {% endif %}
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <footer class="bg-dark mt-2 mb-0 p-0">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <span>Franco Manuel Lonello Serra</span>
+            </div>
+            <div class="col-auto">
+                <i class="fa-solid fa-phone"></i> <span>+54 9 11 6511-9442</span>
+            </div>
+            <div class="col-auto">
+                <i class="fa-solid fa-envelope"></i> <span>francolonelloserra@gmail.com</span>
+            </div>
+        </div>
+     </footer>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--     {% if tarea.fecha_completada %}
+        <h2>{{tarea.titulo}} ✅</h2>
+    {% else %}
+        <h2>{{tarea.titulo}} ⌛</h2>
+    {% endif %}
+    {{error}}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button>Editar</button>
+    </form>
+
+
+    {% if tarea.fecha_completada %}
+        <form action="{% url 'tarea_incompleta' tarea.id %}" method="POST">
+            {% csrf_token %}
+            <button> Cambiar a pendiente </button>
+        </form>
+    {% else %}
+        <form action="{% url 'tarea_completada' tarea.id %}" method="POST">
+            {% csrf_token %}
+            <button> Cambiar a completada </button>
+        </form>
+    {% endif %}
+        <form action="{% url 'eliminar_tarea' tarea.id %}" method="POST">
+        {% csrf_token %}
+        <button> Eliminar </button>
+    </form>
+
+    
+
+ -->
+    <main class="container">
+        <article class="row">
+            <div class="col-md-4 offset-md-4 mt-5">
+                <div class="card card-body mx-auto">
+                    {% if tarea.fecha_completada %}
+                        <h2  class="display-4 mb-4 text-center">{{tarea.titulo}} ✅</h2>
+                    {% else %}
+                        <h2  class="display-4 mb-4 text-center">{{tarea.titulo}} ⌛</h2>
+                    {% endif %}
+                    {{error}}
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form}}
+                        <div class="text-center m-2">
+                            <button class="btn btn-primary">Editar</button>
+                        </div>
+                    </form>
+                    {% if tarea.fecha_completada %}
+                        <form action="{% url 'tarea_incompleta' tarea.id %}" method="POST" class="text-center m-2">
+                            {% csrf_token %}
+                            <button class="btn btn-warning"> Cambiar a pendiente </button>
+                        </form>
+                    {% else %}
+                        <form action="{% url 'tarea_completada' tarea.id %}" method="POST" class="text-center m-2">
+                            {% csrf_token %}
+                            <button class="btn btn-success"> Cambiar a completada </button>
+                        </form>
+                    {% endif %}
+                    <form action="{% url 'eliminar_tarea' tarea.id %}" method="POST" class="text-center m-2" id="delete-form">
+                        {% csrf_token %}
+                        <button class="btn btn-danger" onclick="confirmDelete(event)"> Eliminar </button>
+                    </form>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        function confirmDelete(event) {
+            if (!confirm('¿Seguro que desea eliminar esta tarea?')) {
+                event.preventDefault();
+            }
+        }
+    </script>
+        
+        
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <article class="text-center">
+        <h1 class="p-5 display-2">Django CRUD</h1>
+        <p>Este sistema implementa un CRUD (Create, Read, Update, Delete) para gestionar tareas utilizando Django, un framework de desarrollo web en Python. Con esta aplicación, los usuarios pueden crear nuevas tareas especificando detalles como el título, la descripción y si dicha tarea es importante o no. Además, se pueden ver todas las tareas existentes en una lista, actualizar información de una tarea y eliminar tareas que ya no son necesarias. Todo esto se logra mediante una interfaz intuitiva y fácil de usar, proporcionando una experiencia fluida para la gestión eficiente de tareas.</p>
+        {% if user.is_authenticated == False %}
+            <a class= "btn btn-primary" href="{% url 'registrarse' %}">Registrarse</a>
+            <a class= "btn btn-secondary" href="{% url 'iniciar_sesion' %}">Iniciar sesión</a>
+        {% endif %}
+    </article>
+</main>
+
+{% endblock %}

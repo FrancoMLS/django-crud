@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="display-4 m-4 text-center">Tareas completadas</h1>
+            {% for tarea in tareas %}
+                <ul class="list-group mb-3">
+                    <li class="list-group-item">
+                        {% if tarea.importante %}
+                            <a href="{% url 'detalle_tarea' tarea.id %}" style="text-decoration: none;">
+                                <h2 style="color: red;">{{tarea.titulo}} ✅</h2>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'detalle_tarea' tarea.id %}" style="text-decoration: none; color: black;">
+                                <h2>{{tarea.titulo}} ✅</h2>
+                            </a>
+                        {% endif %}
+                        <p>{{tarea.descripcion}}</p>
+                        <p class="text-end"><i>{{tarea.fecha_completada|date:'M j Y'}}</i></p>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

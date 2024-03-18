@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <form action="/tareas/crear_tarea/" method="POST" >
+    <h1>Crear tarea</h1>
+    {{error}}
+    {% csrf_token %}
+    {{form}}
+    <button> Crear </button>
+</form>
+
+ -->
+
+
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form action="/tareas/crear_tarea/" method="POST" class="card card-body mt-5">
+                <h1 class="display-4 m-4 text-center">Crear tarea</h1>
+                {{error}}
+                {% csrf_token %}
+                {{form}}
+                <button class="btn btn-primary mt-3"> Crear </button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
